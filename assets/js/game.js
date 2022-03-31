@@ -1,6 +1,6 @@
 var playerName = window.prompt ("what is your robot's name?");
 var playerHealth = 100;
-var playerAttack = 10;
+var playerAttack = 50;
 var playerMoney = 10;
 
 
@@ -13,6 +13,7 @@ var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 
 var fight = function(enemyName) {
     // Alert palyers that they are starting the round
+    while(enemyHealth > 0){
     window.alert("Welcome to Robot Gladiators!");
     console.log ("Your robot's name is " + playerName + ".");
     var promptFight = window.prompt("would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP to choose.");
@@ -25,21 +26,21 @@ var fight = function(enemyName) {
             enemyHealth = enemyHealth - playerAttack;
             // Log a resulting message to the consle so we know  that it worked.
             console.log(
-                playerName + " attacked " + enemyNames[i] + ". " + enemyNames[i] + " now has " + enemyHealth + " health remaining."
+                playerName + " attacked " + enemyNames [i] + ". " + enemyNames [i] + " now has " + enemyHealth + " health remaining."
                 );
                 // Check enemy's health
                 if (enemyHealth <= 0) {
-                    window.alert (enemyNames[i] + " has died!");
+                    window.alert (enemyNames [i] + " has died!");
                 }
                 else {
-                    window.alert (enemyNames[i] + " still has " + enemyHealth + " health left.");
+                    window.alert (enemyNames [i] + " still has " + enemyHealth + " health left.");
                 }
                 
     // Subtract the value of 'enemyAttack' from the value of 'playerHealth' and use that result ot update the value in the 'playerHealth' variable.
     playerHealth = playerHealth - enemyAttack;
     // Log resulting message to the console so we know that it worked.
     console.log(
-        enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining."
+        enemyNames [i] + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining."
         );
         
         // Check player's health
@@ -68,10 +69,13 @@ var fight = function(enemyName) {
         window.alert("You need to choose a valid option. Try again!");
     }
 }
+}
 
 
-fight();
+//fight();
 
 for(var i = 0; i < enemyNames.length; i++){
-   fight(enemyNames [i]);
+    var pickedEnemyName = enemyNames [i];
+    enemyHealth = 50;
+   fight(pickedEnemyName);
 }
