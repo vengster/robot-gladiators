@@ -47,7 +47,7 @@ var fight = function(enemyName) {
             enemyHealth = enemyHealth - playerAttack;
             // Log a resulting message to the consle so we know  that it worked.
             console.log(
-                playerName + " attacked " + enemyNames [i] + ". " + enemyNames [i] + " now has " + enemyHealth + " health remaining."
+                playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining."
                 );
                 // Check enemy's health
                 if (enemyHealth <= 0) {
@@ -55,14 +55,14 @@ var fight = function(enemyName) {
                     break;
                 }
                 else {
-                    window.alert (enemyNames [i] + " still has " + enemyHealth + " health left.");
+                    window.alert (enemyName + " still has " + enemyHealth + " health left.");
                 }
                 
     // Subtract the value of 'enemyAttack' from the value of 'playerHealth' and use that result ot update the value in the 'playerHealth' variable.
     playerHealth = playerHealth - enemyAttack;
     // Log resulting message to the console so we know that it worked.
     console.log(
-        enemyNames [i] + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining."
+        enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining."
         );
         
         // Check player's health
@@ -80,11 +80,15 @@ var fight = function(enemyName) {
 //fight();
 
 for(var i = 0; i < enemyNames.length; i++){
-    var pickedEnemyName = enemyNames [i];
-    enemyHealth = 50;
-   fight(pickedEnemyName);
+    if (playerHealth > 0){
+        window.alert('Welcome to Robot Gladiators! Round ' + (i + 1));
+    
+        var pickedEnemyName = enemyNames[i];
+        enemyHealth = 50;
+        fight(pickedEnemyName);
 }
-
-// if (enemyHealth <= 0){
-//     break;
-// }
+else {
+    window.alert('You have lost your robot in battle! Game Over!');
+    break;
+    }
+}
