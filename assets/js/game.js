@@ -37,8 +37,13 @@ var fightOrSkip = function() {
 
 //fight function
 var fight = function(enemy) {
+    var isPlayerTurn = true;
+    if (Math.random() > 0.5) {
+        isPlayerTurn = false;
+    }
     // Alert palyers that they are starting the round
     while(playerInfo.health > 0 && enemy.health > 0){
+        if (isPlayerTurn) {
         if (fightOrSkip()) {
             break;
         }
@@ -76,6 +81,8 @@ var fight = function(enemy) {
             window.alert (playerInfo.name + " still has " + playerInfo.health + " health left.");
             }
         }
+        isPlayerTurn = !isPlayerTurn;
+    }
 };
 
 
